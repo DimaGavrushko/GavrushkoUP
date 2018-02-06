@@ -16,3 +16,21 @@ Untracked files:
         task1/
 
 nothing added to commit but untracked files present (use "git add" to track)
+
+commit 353d248741cc82f0124e66b8def08c3fea094745 (HEAD -> master, origin/master, origin/HEAD)
+Author: Dmitry Gavrushko <gavrushko98@gmail.com>
+Date:   Tue Feb 6 22:40:09 2018 +0300
+
+    add log.txt
+
+commit d45278abcef37c87585d008bf634cd32c30d5d9d
+Author: Dmitry Gavrushko <gavrushko98@gmail.com>
+Date:   Tue Feb 6 22:31:25 2018 +0300
+
+    add status.txt
+
+commit eb9dbb989b1f98f7d82e1f5fa52649e2cc0db807
+Author: Dmitry Gavrushko <gavrushko98@gmail.com>
+Date:   Tue Feb 6 22:29:02 2018 +0300
+
+    add .gitignore
