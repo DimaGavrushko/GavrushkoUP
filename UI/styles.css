@@ -1,4 +1,4 @@
-
+﻿
 /************************************HEADER******************************************************/
 header{
     height: auto;
@@ -102,7 +102,7 @@ footer{
     min-width: 200px;
     height: 100%;
     margin: 2em 0em;
-    padding: 0.3em;
+    padding: 0.27em;
 }
 #inside_cell_inform{
     position: relative;
