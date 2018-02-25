@@ -1,0 +1,144 @@
+
+/************************************HEADER******************************************************/
+header{
+    height: auto;
+    overflow:hidden;
+    background-color: black;
+    color: white;
+    font-size: 2.5em;
+    font-weight: bold;
+    padding: 0.5em;
+    text-align: center;
+}
+.button_in_header{
+    display: inline-block;
+    position: relative;
+    font-size: 0.5em;
+}
+.button_in_header:hover{
+    color: #4dd7fa;
+}
+#name:hover{
+    color: white;
+}
+#name{
+    font-size: 40px;
+    margin-left: 0.5em;
+}
+#add_new_photo{
+    float: left;
+    margin: 0.7em;
+    margin-right: 2.5em;
+}
+#exit{
+    float: right;
+    margin: 0.7em;
+}
+#user_name{
+    float: right;
+    margin: 0.7em;
+}
+
+/*************************************FOOTER************************************************************/
+footer{
+    background-color: black;
+    font-family: Arial;
+    height: auto;
+    overflow:hidden;
+    text-align: left;
+    padding: 0.5em;
+    color: white;
+}
+
+.button_in_footer{
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+    padding: 0.5em;
+    margin-right: 2.5em;
+}
+
+#name_in_footer{
+    position: relative;
+    font-size: 18px;
+    top:-0.3em;
+}
+/*********************************************************************************************************/
+.back{
+    margin: 0px;
+    padding: 0px;
+    background-color: #f4f6f6;
+    font-family: Arial;
+}
+
+.search_line{
+    position: relative;
+    height: auto;
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    font-size: 1.125em;
+    padding: 1.3em;
+}
+.checkbox{
+    display: inline-block;
+    font-weight: normal;
+    margin-right: 2em;
+    position: relative;
+}
+.photos_table{
+    width: auto;
+    position: relative;
+    display: inline-block;
+    margin: 1em;
+    padding: 2em;
+}
+
+.cell{
+	border: 1px solid #fff; /* Белая рамка */
+	border-radius: 10px; /* Радиус скругления */
+    display: inline-block;
+    width: 19%;
+    min-width: 200px;
+    height: 100%;
+    margin: 2em 0em;
+    padding: 0.3em;
+}
+#inside_cell_inform{
+    position: relative;
+    width: 95%;
+    overflow: hidden;
+}
+
+#back_under_photo
+{
+    background-color:#efebeb
+}
+
+
+#image{
+    position: relative;
+    display: inline-block;
+    margin: 0.5em 0em;
+}
+#like{
+    position: relative;
+    display: inline-block;
+
+}
+#count_likes{
+    display: inline-block;
+    position: relative;
+    font-weight: bold;
+    top:-0.275em;
+}
+.button_load{
+    padding: 1.5em;
+    text-align: center;
+    background-color:#f4f6f6;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+.button_load:hover{
+    color: #4dd7fa;;
+}
