@@ -10,31 +10,31 @@ header{
     padding: 0.5em;
     text-align: center;
 }
-.button_in_header{
+.button-in-header{
     display: inline-block;
     position: relative;
     font-size: 0.5em;
 }
-.button_in_header:hover{
+.button-in-header:hover{
     color: #4dd7fa;
 }
-#name:hover{
+.name:hover{
     color: white;
 }
-#name{
+.name{
     font-size: 40px;
     margin-left: 0.5em;
 }
-#add_new_photo{
+.add-new-photo{
     float: left;
     margin: 0.7em;
     margin-right: 2.5em;
 }
-#exit{
+.exit{
     float: right;
     margin: 0.7em;
 }
-#user_name{
+.user-name{
     float: right;
     margin: 0.7em;
 }
@@ -50,7 +50,7 @@ footer{
     color: white;
 }
 
-.button_in_footer{
+.button-in-footer{
     display: inline-block;
     position: relative;
     font-size: 14px;
@@ -58,10 +58,10 @@ footer{
     margin-right: 2.5em;
 }
 
-#name_in_footer{
+.name-in-footer{
     position: relative;
     font-size: 18px;
-    top:-0.3em;
+    bottom:0.3em;
 }
 /*********************************************************************************************************/
 .back{
@@ -71,7 +71,7 @@ footer{
     font-family: Arial;
 }
 
-.search_line{
+.search-line{
     position: relative;
     height: auto;
     font-weight: bold;
@@ -86,7 +86,7 @@ footer{
     margin-right: 2em;
     position: relative;
 }
-.photos_table{
+.photos-table{
     width: auto;
     position: relative;
     display: inline-block;
@@ -104,41 +104,41 @@ footer{
     margin: 2em 0em;
     padding: 0.27em;
 }
-#inside_cell_inform{
+.inside-cell-inform{
     position: relative;
     width: 95%;
     overflow: hidden;
 }
 
-#back_under_photo
+.back-under-photo
 {
     background-color:#efebeb
 }
 
 
-#image{
+.image{
     position: relative;
     display: inline-block;
     margin: 0.5em 0em;
 }
-#like{
+.like{
     position: relative;
     display: inline-block;
 
 }
-#count_likes{
+.count_likes{
     display: inline-block;
     position: relative;
     font-weight: bold;
-    top:-0.275em;
+    bottom:0.275em;
 }
-.button_load{
+.button-load{
     padding: 1.5em;
     text-align: center;
     background-color:#f4f6f6;
     font-weight: bold;
     font-size: 1.5em;
 }
-.button_load:hover{
+.button-load:hover{
     color: #4dd7fa;;
 }
