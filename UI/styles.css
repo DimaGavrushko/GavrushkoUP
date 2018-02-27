@@ -7,7 +7,7 @@ header{
     color: white;
     font-size: 2.5em;
     font-weight: bold;
-    padding: 0.5em;
+    padding: 1.5%;
     text-align: center;
 }
 .button-in-header{
@@ -23,20 +23,20 @@ header{
 }
 .name{
     font-size: 40px;
-    margin-left: 0.5em;
+    margin-left: 1.5%;
 }
 .add-new-photo{
     float: left;
-    margin: 0.7em;
-    margin-right: 2.5em;
+    margin: 1%;
+    margin-right: 3.5%;
 }
 .exit{
     float: right;
-    margin: 0.7em;
+    margin: 1%;
 }
 .user-name{
     float: right;
-    margin: 0.7em;
+    margin: 1%;
 }
 
 /*************************************FOOTER************************************************************/
@@ -152,4 +152,25 @@ footer{
 		width:95%;
 	
 	}
+
+
+
+.name{
+	width:100%;
+    margin: 1%;
+}
+.add-new-photo{
+	width:100%;
+    margin: 1%;
+}
+.exit{
+	width:100%;
+    margin: 1%;
+}
+.user-name{
+	width:100%;
+    margin: 1%;
+}
+	
+	
 }
