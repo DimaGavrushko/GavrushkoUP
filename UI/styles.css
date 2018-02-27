@@ -87,23 +87,25 @@ footer{
     position: relative;
 }
 .photos-table{
+    font-size:1.2em;
     width: auto;
     position: relative;
     display: inline-block;
-    margin: 1em;
-    padding: 2em;
+    margin: 4%;
+    padding: 1%;
+}
+.cell{
+    vertical-align:top;
+    border: 1px solid #fff; /* Белая рамка */
+    border-radius: 10px; /* Радиус скругления */
+    display: inline-block;
+    width: 40%;
+    height: 100%;
+    margin-left: 4%;
+    margin-bottom:2%;
+    padding: 1.5%;
 }
 
-.cell{
-	border: 1px solid #fff; /* Белая рамка */
-	border-radius: 10px; /* Радиус скругления */
-    display: inline-block;
-    width: 19%;
-    min-width: 200px;
-    height: 100%;
-    margin: 2em 0em;
-    padding: 0.27em;
-}
 .inside-cell-inform{
     position: relative;
     width: 95%;
@@ -141,4 +143,13 @@ footer{
 }
 .button-load:hover{
     color: #4dd7fa;;
+}
+
+@media screen and (max-width:420px ){
+	.cell{
+		padding:3px;
+		margin-left:10px;
+		width:95%;
+	
+	}
 }
