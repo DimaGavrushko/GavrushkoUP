@@ -42,7 +42,6 @@ header{
 /*************************************FOOTER************************************************************/
 footer{
     background-color: black;
-    font-family: Arial;
     height: auto;
     overflow:hidden;
     text-align: left;
@@ -69,16 +68,21 @@ footer{
     padding: 0px;
     background-color: #f4f6f6;
     font-family: Arial;
+    font-weight: normal;
 }
 
 .search-line{
     position: relative;
     height: auto;
-    font-weight: bold;
+    font-weight: 700;
     background-color: white;
     color: black;
     font-size: 1.125em;
     padding: 1.3em;
+}
+
+.text-box{
+	border-radius: 15px;
 }
 .checkbox{
     display: inline-block;
@@ -110,13 +114,13 @@ footer{
     position: relative;
     width: 95%;
     overflow: hidden;
+    float: left;
 }
 
 .back-under-photo
 {
     background-color:#efebeb
 }
-
 
 .image{
     position: relative;
@@ -128,7 +132,7 @@ footer{
     display: inline-block;
 
 }
-.count_likes{
+.count-likes{
     display: inline-block;
     position: relative;
     font-weight: bold;
@@ -174,3 +178,4 @@ footer{
 	
 	
 }
+
