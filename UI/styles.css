@@ -117,12 +117,23 @@ footer{
     float: left;
 }
 
+.inside-cell-description{
+	font-family:MenuText;
+}
+
 .back-under-photo
 {
     background-color:#efebeb
 }
 
-.image{
+.icons img{
+	height:25px;
+	width:25px;
+}
+
+.image img{
+	height:30%;
+	width:100%;
     position: relative;
     display: inline-block;
     margin: 0.5em 0em;
@@ -159,21 +170,21 @@ footer{
 
 
 
-.name{
-	width:100%;
-    margin: 1%;
-}
-.add-new-photo{
-	width:100%;
-    margin: 1%;
-}
-.exit{
-	width:100%;
-    margin: 1%;
-}
-.user-name{
-	width:100%;
-    margin: 1%;
+	.name{
+		width:100%;
+		margin: 1%;
+	}
+	.add-new-photo{
+		width:100%;
+		margin: 1%;
+	}
+	.exit{
+		width:100%;
+		margin: 1%;
+	}
+	.user-name{
+		width:100%;
+		margin: 1%;
 }
 	
 	
