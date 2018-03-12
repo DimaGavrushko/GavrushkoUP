@@ -119,6 +119,7 @@ footer{
 
 .inside-cell-description{
 	font-family:MenuText;
+    overflow: hidden;
 }
 
 .back-under-photo

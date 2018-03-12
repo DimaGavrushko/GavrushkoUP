@@ -2,181 +2,251 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body class="back">
-	<script src = "script.js"></script>
-    <script src = "DOM.js"></script>
-    <header>
-        <div class="button-in-header add-new-photo">Add new photo</div>
-        <div class="button-in-header name">Photoportal</div>
-        <div class="button-in-header exit">Exit</div>
-        <div class="button-in-header user-name">Dima Gavrushko</div>
-    </header>
+<header>
+    <div class="button-in-header add-new-photo">Add new photo</div>
+    <div class="button-in-header name">Photoportal</div>
+    <div class="button-in-header exit">Exit</div>
+    <div class="button-in-header user-name">Dima Gavrushko</div>
+</header>
 
-    <div class="search-line">Filtered by:
-        <div class="checkbox"><input type="checkbox">Author
-            <input  type="text" class = "text-box"></div>
-        <div class="checkbox"><input type="checkbox">Date
-            <input  type="text" class = "text-box"></div>
-        <div class="checkbox"><input type="checkbox">Hash-Tags
-            <input  type="text" class = "text-box"></div>
-        <div class="checkbox"><img src="img/search.png" height="25" width="25" align="center">Search...</div>
+<div class="search-line">Filtered by:
+    <div class="checkbox"><input type="checkbox">Author
+        <input type="text" class="text-box"></div>
+    <div class="checkbox"><input type="checkbox">Date
+        <input type="text" class="text-box"></div>
+    <div class="checkbox"><input type="checkbox">Hash-Tags
+        <input type="text" class="text-box"></div>
+    <div class="checkbox"><img src="img/search.png" height="25" width="25" align="center">Search...</div>
 
-    </div>
+</div>
+
+
+<div class="photos-table">
 
     <!--
-    <div class="photos-table">
+    <div class="cell">
 
-        <div class="cell">
-            <div class="inside-cell-inform">Gavrushko Dima</div>
-            <div class="inside-cell-inform">24.02.2018</div>
-            <div class = "icons"><img src="img/trash.png"></div>
-            <div class = "icons"><img src="img/edit.png"></div>
-            <div class="image"><img src="img/pattern.jpg"></div>
-            <div class="like icons"><img src="img/not_like.png"> </div>
-            <div class="count-likes">37</div>
-            <div class="back-under-photo">
-                <div class="inside-cell-description">#likeforlike#followme</div>
-                <div class="inside-cell-description">Description</div>
+        <div class="inside-cell-inform">
+            Gavrushko Dima<br>
+            24.02.2018
+        </div>
+        <div class="icons">
+            <img src="img/trash.png"><br>
+            <img src="img/edit.png">
+        </div>
+        <div class="image"><img src="img/pattern.jpg"></div>
+        <div class="like icons"><img src="img/not_like.png"></div>
+        <div class="count-likes">37</div>
+        <div class="back-under-photo">
+            <div class="inside-cell-description">
+                #likeforlike#followme<br>
+                Description
             </div>
         </div>
-        <div class="cell">
-            <div class="inside-cell-inform">Gavrushko Dima</div>
-            <div class="inside-cell-inform">24.02.2018</div>
-            <div class = "icons"><img src="img/trash.png"></div>
-            <div class = "icons"><img src="img/edit.png"></div>
-            <div class="image"><img src="img/pattern2.jpg"></div>
-            <div class="like icons"><img src="img/not_like.png"> </div>
-            <div class="count-likes">37</div>
-            <div class="back-under-photo">
-                <div class="inside-cell-description">#likeforlike#followme</div>
-                <div class="inside-cell-description">Description</div>
-            </div>	
-        </div>
-        <div class="cell">
-            <div class="inside-cell-inform">Gavrushko Dima</div>
-            <div class="inside-cell-inform">24.02.2018</div>
-            <div class = "icons"><img src="img/trash.png"></div>
-            <div class = "icons"><img src="img/edit.png"></div>
-            <div class="image"><img src="img/pattern3.jpg"></div>
-            <div class="like icons"><img src="img/not_like.png"> </div>
-            <div class="count-likes">37</div>
-            <div class="back-under-photo">
-                <div class="inside-cell-description">#likeforlike#followme</div>
-                <div class="inside-cell-description">Description</div>
-            </div>	
-        </div>
-        <div class="cell">
-            <div class="inside-cell-inform">Gavrushko Dima</div>
-            <div class="inside-cell-inform">24.02.2018</div>
-            <div class = "icons"><img src="img/trash.png"></div>
-            <div class = "icons"><img src="img/edit.png"></div>
-            <div class="image"><img src="img/pattent2.jpg"></div>
-            <div class="like icons"><img src="img/not_like.png"> </div>
-            <div class="count-likes">37</div>
-            <div class="back-under-photo">
-                <div class="inside-cell-description">#likeforlike#followme</div>
-                <div class="inside-cell-description">Description</div>
-            </div>	
-        </div>
-        <div class="cell">
-            <div class="inside-cell-inform">Gavrushko Dima</div>
-            <div class="inside-cell-inform">24.02.2018</div>
-            <div class = "icons"><img src="img/trash.png"></div>
-            <div class = "icons"><img src="img/edit.png"></div>
-            <div class="image"><img src="img/pattern.jpg"></div>
-            <div class="like icons"><img src="img/not_like.png"> </div>
-            <div class="count-likes">37</div>
-            <div class="back-under-photo">
-                <div class="inside-cell-description">#likeforlike#followme</div>
-                <div class="inside-cell-description">Description</div>
-            </div>	
-        </div>
+    </div>
 
-        <div class="cell">
-            <div class="inside-cell-inform">Gavrushko Dima</div>
-            <div class="inside-cell-inform">24.02.2018</div>
-            <div class = "icons"><img src="img/trash.png"></div>
-            <div class = "icons"><img src="img/edit.png"></div>
-            <div class="image"><img src="img/pattern2.jpg"></div>
-            <div class="like icons"><img src="img/not_like.png"> </div>
-            <div class="count-likes">37</div>
-            <div class="back-under-photo">
-                <div class="inside-cell-description">#likeforlike#followme</div>
-                <div class="inside-cell-description">Description</div>
-            </div>	
+    <div class="cell">
+        <div class="inside-cell-inform">
+            Gavrushko Dima<br>
+            24.02.2018
         </div>
-        <div class="cell">
-            <div class="inside-cell-inform">Gavrushko Dima</div>
-            <div class="inside-cell-inform">24.02.2018</div>
-            <div class = "icons"><img src="img/trash.png"></div>
-            <div class = "icons"><img src="img/edit.png"></div>
-            <div class="image"><img src="img/pattern3.jpg"></div>
-            <div class="like icons"><img src="img/not_like.png"> </div>
-            <div class="count-likes">37</div>
-            <div class="back-under-photo">
-                <div class="inside-cell-description">#likeforlike#followme</div>
-                <div class="inside-cell-description">Description</div>
-            </div>	
+        <div class="icons">
+            <img src="img/trash.png"><br>
+            <img src="img/edit.png">
         </div>
-        <div class="cell">
-            <div class="inside-cell-inform">Gavrushko Dima</div>
-            <div class="inside-cell-inform">24.02.2018</div>
-            <div class = "icons"><img src="img/trash.png"></div>
-            <div class = "icons"><img src="img/edit.png"></div>
-            <div class="image"><img src="img/pattent2.jpg"></div>
-            <div class="like icons"><img src="img/not_like.png"> </div>
-            <div class="count-likes">37</div>
-            <div class="back-under-photo">
-                <div class="inside-cell-description">#likeforlike#followme</div>
-                <div class="inside-cell-description">Description</div>
-            </div>	
+        <div class="image"><img src="img/pattern.jpg"></div>
+        <div class="like icons"><img src="img/not_like.png"></div>
+        <div class="count-likes">37</div>
+        <div class="back-under-photo">
+            <div class="inside-cell-description">
+                #likeforlike#followme<br>
+                Description
+            </div>
         </div>
-        <div class="cell">
-            <div class="inside-cell-inform">Gavrushko Dima</div>
-            <div class="inside-cell-inform">24.02.2018</div>
-            <div class = "icons"><img src="img/trash.png"></div>
-            <div class = "icons"><img src="img/edit.png"></div>
-            <div class="image"><img src="img/pattern.jpg"></div>
-            <div class="like icons"><img src="img/not_like.png"> </div>
-            <div class="count-likes">37</div>
-            <div class="back-under-photo">
-                <div class="inside-cell-description">#likeforlike#followme</div>
-                <div class="inside-cell-description">Description</div>
-            </div>	
+    </div>
+    <div class="cell">
+        <div class="inside-cell-inform">
+            Gavrushko Dima<br>
+            24.02.2018
         </div>
-        <div class="cell">
-            <div class="inside-cell-inform">Gavrushko Dima</div>
-            <div class="inside-cell-inform">24.02.2018</div>
-            <div class = "icons"><img src="img/trash.png"></div>
-            <div class = "icons"><img src="img/edit.png"></div>
-            <div class = "image"><img src="img/pattern2.jpg"></div>
-            <div class = "like icons"><img src="img/not_like.png"> </div>
-            <div class = "count-likes">37</div>
-            <div class = "back-under-photo">
-                <div class="inside-cell-description">#likeforlike#followme</div>
-                <div class="inside-cell-description">Description</div>
-            </div>	
+        <div class="icons">
+            <img src="img/trash.png"><br>
+            <img src="img/edit.png">
         </div>
+        <div class="image"><img src="img/pattern.jpg"></div>
+        <div class="like icons"><img src="img/not_like.png"></div>
+        <div class="count-likes">37</div>
+        <div class="back-under-photo">
+            <div class="inside-cell-description">
+                #likeforlike#followme<br>
+                Description
+            </div>
+        </div>
+    </div>
+
+    <div class="cell">
+        <div class="inside-cell-inform">
+            Gavrushko Dima<br>
+            24.02.2018
+        </div>
+        <div class="icons">
+            <img src="img/trash.png"><br>
+            <img src="img/edit.png">
+        </div>
+        <div class="image"><img src="img/pattern.jpg"></div>
+        <div class="like icons"><img src="img/not_like.png"></div>
+        <div class="count-likes">37</div>
+        <div class="back-under-photo">
+            <div class="inside-cell-description">
+                #likeforlike#followme<br>
+                Description
+            </div>
+        </div>
+    </div>
+
+    <div class="cell">
+        <div class="inside-cell-inform">
+            Gavrushko Dima<br>
+            24.02.2018
+        </div>
+        <div class="icons">
+            <img src="img/trash.png"><br>
+            <img src="img/edit.png">
+        </div>
+        <div class="image"><img src="img/pattern.jpg"></div>
+        <div class="like icons"><img src="img/not_like.png"></div>
+        <div class="count-likes">37</div>
+        <div class="back-under-photo">
+            <div class="inside-cell-description">
+                #likeforlike#followme<br>
+                Description
+            </div>
+        </div>
+    </div>
+
+    <div class="cell">
+        <div class="inside-cell-inform">
+            Gavrushko Dima<br>
+            24.02.2018
+        </div>
+        <div class="icons">
+            <img src="img/trash.png"><br>
+            <img src="img/edit.png">
+        </div>
+        <div class="image"><img src="img/pattern.jpg"></div>
+        <div class="like icons"><img src="img/not_like.png"></div>
+        <div class="count-likes">37</div>
+        <div class="back-under-photo">
+            <div class="inside-cell-description">
+                #likeforlike#followme<br>
+                Description
+            </div>
+        </div>
+    </div>
+
+    <div class="cell">
+        <div class="inside-cell-inform">
+            Gavrushko Dima<br>
+            24.02.2018
+        </div>
+        <div class="icons">
+            <img src="img/trash.png"><br>
+            <img src="img/edit.png">
+        </div>
+        <div class="image"><img src="img/pattern.jpg"></div>
+        <div class="like icons"><img src="img/not_like.png"></div>
+        <div class="count-likes">37</div>
+        <div class="back-under-photo">
+            <div class="inside-cell-description">
+                #likeforlike#followme<br>
+                Description
+            </div>
+        </div>
+    </div>
+
+    <div class="cell">
+        <div class="inside-cell-inform">
+            Gavrushko Dima<br>
+            24.02.2018
+        </div>
+        <div class="icons">
+            <img src="img/trash.png"><br>
+            <img src="img/edit.png">
+        </div>
+        <div class="image"><img src="img/pattern.jpg"></div>
+        <div class="like icons"><img src="img/not_like.png"></div>
+        <div class="count-likes">37</div>
+        <div class="back-under-photo">
+            <div class="inside-cell-description">
+                #likeforlike#followme<br>
+                Description
+            </div>
+        </div>
+    </div>
+
+    <div class="cell">
+        <div class="inside-cell-inform">
+            Gavrushko Dima<br>
+            24.02.2018
+        </div>
+        <div class="icons">
+            <img src="img/trash.png"><br>
+            <img src="img/edit.png">
+        </div>
+        <div class="image"><img src="img/pattern.jpg"></div>
+        <div class="like icons"><img src="img/not_like.png"></div>
+        <div class="count-likes">37</div>
+        <div class="back-under-photo">
+            <div class="inside-cell-description">
+                #likeforlike#followme<br>
+                Description
+            </div>
+        </div>
+    </div>
+
+    <div class="cell">
+        <div class="inside-cell-inform">
+            Gavrushko Dima<br>
+            24.02.2018
+        </div>
+        <div class="icons">
+            <img src="img/trash.png"><br>
+            <img src="img/edit.png">
+        </div>
+        <div class="image"><img src="img/pattern.jpg"></div>
+        <div class="like icons"><img src="img/not_like.png"></div>
+        <div class="count-likes">37</div>
+        <div class="back-under-photo">
+            <div class="inside-cell-description">
+                #likeforlike#followme<br>
+                Description
+            </div>
+        </div>
+    </div>
 -->
 
+</div>
+<div class="button-load">Load more</div>
+<footer>
+    <div class="button-in-footer">
+        Gavrushko Dmitry
+        <br>25.02.2018
     </div>
-    <div class="button-load">Load more</div>
-    <footer>
-        <div class="button-in-footer">
-            Gavrushko Dmitry
-            <br>25.02.2018
-        </div>
-        <div class="button-in-footer">
-            gavrushko98@gmail.com
-            <br>2 grade,13 group
-        </div>
-        <div class="button-in-footer">
-            <div class="name-in-footer">Photoportal</div>
-        </div>
-    </footer>
+    <div class="button-in-footer">
+        gavrushko98@gmail.com
+        <br>2 grade,13 group
+    </div>
+    <div class="button-in-footer">
+        <div class="name-in-footer">Photoportal</div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="DOM.js"></script>
+</footer>
 </body>
 </html>
