@@ -1,6 +1,42 @@
-let modul = (function () {
-    let user = null;
+let user = null;
 
+
+let modul = (function () {
+
+    let checkUser = function () {
+        document.querySelector('header').innerText = "";
+        let photoPortal = document.createElement("div");
+        photoPortal.className = "button-in-header name";
+        photoPortal.innerHTML = "PhotoPortal";
+        document.querySelector('header').appendChild(photoPortal);
+
+        if(user)
+        {
+            let addPhoto = document.createElement("div");
+            addPhoto.className = "button-in-header add-new-photo";
+            addPhoto.innerHTML = "Add new photo";
+
+            let exit = document.createElement("div");
+            exit.className = "button-in-header exit";
+            exit.innerHTML = "Exit";
+
+            let name = document.createElement("div");
+            name.className = "button-in-header user-name";
+            name.innerHTML = user;
+
+            document.querySelector('header').appendChild(addPhoto);
+            document.querySelector('header').appendChild(exit);
+            document.querySelector('header').appendChild(name);
+        }
+        else
+        {
+            let exit = document.createElement("div");
+            exit.className = "button-in-header exit";
+            exit.innerHTML = "Sign in";
+
+            document.querySelector('header').appendChild(exit);
+        }
+    }
 
     let showPhotoPosts = function (post) {
         let photoTable = document.querySelector(".photos-table");
@@ -18,11 +54,13 @@ let modul = (function () {
         let icons = document.createElement("div");
         icons.className = "icons";
         let trash = document.createElement("img");
-        trash.setAttribute('src', "img/trash.png");
-        trash.innerHTML = "<br>";
         let edit = document.createElement("img");
-        edit.setAttribute('src', "img/edit.png");
 
+        if(post.author === user) {
+            trash.setAttribute('src', "img/trash.png");
+            trash.innerHTML = "<br>";
+            edit.setAttribute('src', "img/edit.png");
+        }
         let image = document.createElement("div");
         image.className = "image";
         let mainPhoto = document.createElement("img");
@@ -48,10 +86,14 @@ let modul = (function () {
         backUnderPhoto.appendChild(insideCellDescr);
         like.appendChild(iconOfLikes);
         image.appendChild(mainPhoto);
-        icons.appendChild(edit);
-        icons.appendChild(trash);
+        if(user === post.author)
+        {
+            icons.appendChild(edit);
+            icons.appendChild(trash);
+        }
         Cell.appendChild(insideCellInform);
-        Cell.appendChild(icons);
+        if(user === post.author)
+            Cell.appendChild(icons);
         Cell.appendChild(image);
         Cell.appendChild(like);
         Cell.appendChild(countLikes);
@@ -74,8 +116,30 @@ let modul = (function () {
         return dd + '.' + mm + '.' + yy;
     }
 
+    function setHashTagInit() {
+        let hashTagsSet = new Set();
+        for (let i = 0; i < photoPosts.length; i++) {
+            for (let j = 0; j < photoPosts[i].hashtags.length; j++) {
+                hashTagsSet.add(photoPosts[i].hashtags[j]);
+            }
+        }
+        return hashTagsSet;
+    }
+
+    function setAuthorInit() {
+        let authorSet = new Set();
+        for (let i = 0; i < photoPosts.length; i++) {
+            authorSet.add(photoPosts[i].author);
+        }
+        return authorSet;
+    }
+
+
     return {
-        showPhotoPosts
+        showPhotoPosts,
+        checkUser,
+        setHashTagInit,
+        setAuthorInit
     }
 
 }());
@@ -108,4 +172,24 @@ function editPost(id,post,skip,top,filterConfig) {
         mod.editPhotoPost(id.toString(),post);
         display(skip,top,filterConfig);
     }
+}
+
+function addAuthorSuggestions() {
+    let authorSet = modul.setAuthorInit();
+    let options = '';
+    for (let item of authorSet) {
+        options += '<option value=' + item + '>\n';
+    }
+    document.getElementById('author-suggestions').innerHTML = options;
+    return options;
+}
+
+function addTagsSuggestions() {
+    let hashTagsSet = modul.setHashTagInit();
+    let options = '';
+    for (let item of hashTagsSet) {
+        options += '<option value=' + item + '>\n';
+    }
+    document.getElementById('tag-suggestions').innerHTML = options;
+    return options;
 }
