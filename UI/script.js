@@ -82,8 +82,7 @@ var photoPosts = [
     },
     {
         id: '10',
-        description: 'Featured photo by @zrodyr\n' +
-        'Get outside and explore for our Weekend Hashtag Project: #WHPlandscape.\n' +
+        description: 'Featured photo by @zrodyr. Get outside and explore for our Weekend Hashtag Project: #WHPlandscape.\n' +
         'Inject energy into an otherwise quiet moment. Capture a friend leaping in the air, or get low to include a patch of flowers in the foreground.',
         createdAt: new Date('2018-03-03'),
         author: 'instagram',
@@ -234,7 +233,7 @@ let mod = (function () {
         }
 
 
-        posts = posts.slice(skip, skip + top);
+        posts = posts.slice(skip, skip + top + 1);
         return posts;
     };
 
@@ -243,18 +242,19 @@ let mod = (function () {
     };
 
 
-    let validatePhotoPost = function (post, change) {
+    let validatePhotoPost = function (post,flag = false) {
 
-        if (((!change && post.id && photoPosts.findIndex(photoPost => photoPost.id === post.id) === -1 && typeof(post.id) === 'string') || (change && !post.id)) &&
-            ((!change && post.description && typeof(post.description) === 'string' && post.description.length > 0 && post.description.length < 200) || (change && (post.description === 'undefiend' || (post.description && typeof(post.description) === 'string' && post.description.length > 0 && post.description.length < 200)))) &&
-            ((!change && post.createdAt && post.createdAt != 'Invalid Date') || (change && !post.createdAt)) &&
-            ((!change && post.author && typeof(post.author) === 'string' && post.author.length !== 0) || (change && !post.author)) &&
-            ((!change && post.photoLink && typeof(post.photoLink) === 'string' && post.photoLink.length !== 0) || (change && (post.photoLink === 'undefiend' || (post.photoLink && typeof(post.photoLink) === 'string' && post.photoLink.length !== 0)))) &&
-            (!post.hashtags || (post.hashtags && post.hashtags.every(item => item[0] === '#'))) &&
-            (!post.likes || (post.likes && post.likes.every(item => typeof(item) === 'string')))
-        ) {
-            return true;
-        }
+        if(flag || post.id && photoPosts.findIndex(photoPost => photoPost.id === post.id) === -1 && typeof(post.id) === 'string')
+            if(post.description && typeof(post.description) === 'string' && post.description.length > 0 && post.description.length < 200)
+                if(post.createdAt && typeof(post.createdAt) != 'Invalid Date')
+                    if (post.author && typeof(post.author) === 'string' && post.author.length !== 0)
+                        if(post.photoLink && typeof(post.photoLink) === 'string' && post.photoLink.length !== 0)
+                            if(!post.hashtags || (post.hashtags && post.hashtags.every(item => item[0] === '#')))
+                                if(!post.likes || (post.likes && post.likes.every(item => typeof(item) === 'string')))
+                                 {
+                                    return true;
+                                 }
+
 
         return false;
     };
@@ -269,8 +269,16 @@ let mod = (function () {
     };
 
     let editPhotoPost = function (id, post) {
-        let changedPost = getPhotoPost(id);
-        if (changedPost && validatePhotoPost(post, true)) {
+        let changedPost = getPhotoPost(id.toString());
+        if(changedPost)
+        {
+            post.id = id;
+            post.author = changedPost.author;
+            post.createdAt = changedPost.createdAt;
+            post.likes = changedPost.likes;
+            post.photoLink = changedPost.photoLink;
+        }
+        if (validatePhotoPost(post,true)) {
             if (post.description)
                 changedPost.description = post.description;
             if (post.photoLink)
@@ -432,4 +440,5 @@ console.log(mod.getPhotoPosts(0,10,{ author:'Иван', hashtags:['#like']}));
 console.log('******************************');
 console.log(mod.getPhotoPosts(0,10,{author:'LLBBB'}));
 console.log('******************************');
+
 */

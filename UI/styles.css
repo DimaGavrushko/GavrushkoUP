@@ -47,6 +47,7 @@ footer{
     text-align: left;
     padding: 0.5em;
     color: white;
+
 }
 
 .button-in-footer{
@@ -118,8 +119,10 @@ footer{
 }
 
 .inside-cell-description{
-	font-family:MenuText;
+	font-family:Arial;
     overflow: hidden;
+    height: auto;
+
 }
 
 .back-under-photo
@@ -166,10 +169,13 @@ footer{
 		padding:3px;
 		margin-left:10px;
 		width:95%;
-	
 	}
 
-
+    .inside-cell-description{
+        max-width: 320px;
+        font-family:Arial;
+        overflow: hidden;
+    }
 
 	.name{
 		width:100%;

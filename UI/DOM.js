@@ -35,13 +35,14 @@ let modul = (function () {
 
         let countLikes = document.createElement("div");
         countLikes.className = "count-likes";
-        countLikes.innerHTML = post.likes.length;
+        if(post.likes.length != 0)
+            countLikes.innerHTML = post.likes.length;
 
         let backUnderPhoto = document.createElement("div");
         backUnderPhoto.className = "back-under-photo";
         let insideCellDescr = document.createElement("div");
         insideCellDescr.className = "inside-cell-description";
-        insideCellDescr.innerHTML = post.hashtags.join('') + "<br>" + post.description;
+        insideCellDescr.innerHTML = post.hashtags.join(' ') + "<br>" + post.description;
 
 
         backUnderPhoto.appendChild(insideCellDescr);
@@ -89,17 +90,22 @@ function display(skip, top, filterConfig) {
 }
 
 function addPost(post,skip, top, filterConfig) {
-    mod.addPhotoPost(post);
-    document.body.getElementsByClassName("photos-table")[0].innerHTML="";
-    let array = mod.getPhotoPosts(skip, top, filterConfig);
-    for (let i = 0; i < array.length; i++) {
-        modul.showPhotoPosts(array[i]);
+    if(mod.addPhotoPost(post)){
+        mod.addPhotoPost(post);
+        display(skip, top, filterConfig);
     }
 }
 
-function removePost(id) {
-    let post = document.getElementById(id);
-    post.remove();
-    mod.removePhotoPost(id);
+function removePost(id,skip, top, filterConfig) {
+    if(mod.removePhotoPost(id.toString())){
+        mod.removePhotoPost(id.toString());
+        display(skip, top, filterConfig);
+    }
 }
 
+function editPost(id,post,skip,top,filterConfig) {
+    if(mod.editPhotoPost(id.toString(),post)){
+        mod.editPhotoPost(id.toString(),post);
+        display(skip,top,filterConfig);
+    }
+}
