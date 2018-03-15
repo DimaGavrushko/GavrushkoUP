@@ -243,12 +243,11 @@ let mod = (function () {
 
 
     let validatePhotoPost = function (post,flag = false) {
-
         if(flag || post.id && photoPosts.findIndex(photoPost => photoPost.id === post.id) === -1 && typeof(post.id) === 'string')
-            if(post.description && typeof(post.description) === 'string' && post.description.length > 0 && post.description.length < 200)
-                if(post.createdAt && post.createdAt instanceof Date)
-                    if (post.author && typeof(post.author) === 'string' && post.author.length !== 0)
-                        if(post.photoLink && typeof(post.photoLink) === 'string' && post.photoLink.length !== 0)
+            if((flag && post.description !== '') || (post.description && typeof(post.description) === 'string' && post.description.length > 0 && post.description.length < 200))
+                if(flag || post.createdAt && post.createdAt instanceof Date)
+                    if (flag || post.author && typeof(post.author) === 'string' && post.author.length !== 0)
+                        if((flag && post.photoLink !== '') || (post.photoLink && typeof(post.photoLink) === 'string' && post.photoLink.length !== 0))
                             if(!post.hashtags || (post.hashtags && post.hashtags.every(item => item[0] === '#')))
                                 if(!post.likes || (post.likes && post.likes.every(item => typeof(item) === 'string')))
                                  {
@@ -270,24 +269,18 @@ let mod = (function () {
 
     let editPhotoPost = function (id, post) {
         let changedPost = getPhotoPost(id.toString());
-        if(changedPost)
-        {
-            post.id = id;
-            post.author = changedPost.author;
-            post.createdAt = changedPost.createdAt;
-            post.likes = changedPost.likes;
-            post.photoLink = changedPost.photoLink;
-        }
-        if (validatePhotoPost(post,true)) {
-            if (post.description)
-                changedPost.description = post.description;
-            if (post.photoLink)
-                changedPost.photoLink = post.photoLink;
-            if (post.hashtags)
-                changedPost.hashtags = post.hashtags;
+        if(changedPost && !post.id && !post.author && !post.createdAt) {
+            if (validatePhotoPost(post, true)) {
+                if (post.description)
+                    changedPost.description = post.description;
+                if (post.photoLink)
+                    changedPost.photoLink = post.photoLink;
+                if (post.hashtags)
+                    changedPost.hashtags = post.hashtags;
 
-            photoPosts[photoPosts.findIndex(post => post.id === id)] = changedPost;
-            return true;
+                photoPosts[photoPosts.findIndex(post => post.id === id)] = changedPost;
+                return true;
+            }
         }
         return false;
     };
