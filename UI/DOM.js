@@ -6,12 +6,12 @@ let modul = (function () {
     let checkUser = function () {
         document.querySelector('header').innerText = "";
         let photoPortal = document.createElement("div");
-        photoPortal.className = "button-in-header name";
-        photoPortal.innerHTML = "PhotoPortal";
-        document.querySelector('header').appendChild(photoPortal);
 
         if(user)
         {
+            photoPortal.className = "button-in-header name-sign";
+            photoPortal.innerHTML = "PhotoPortal";
+            document.querySelector('header').appendChild(photoPortal);
             let addPhoto = document.createElement("div");
             addPhoto.className = "button-in-header add-new-photo";
             addPhoto.innerHTML = "Add new photo";
@@ -30,6 +30,9 @@ let modul = (function () {
         }
         else
         {
+            photoPortal.className = "button-in-header name";
+            photoPortal.innerHTML = "PhotoPortal";
+            document.querySelector('header').appendChild(photoPortal);
             let exit = document.createElement("div");
             exit.className = "button-in-header exit";
             exit.innerHTML = "Sign in";
@@ -193,3 +196,4 @@ function addTagsSuggestions() {
     document.getElementById('tag-suggestions').innerHTML = options;
     return options;
 }
+modul.checkUser();

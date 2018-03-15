@@ -11,7 +11,7 @@ header{
     text-align: center;
 }
 .button-in-header{
-    display: inline-block;
+    display: inline;
     position: relative;
     font-size: 0.5em;
 }
@@ -21,14 +21,19 @@ header{
 .name:hover{
     color: white;
 }
+.name-sign{
+    font-size: 40px;
+    margin-left: 2%;
+}
+
 .name{
     font-size: 40px;
-    margin-left: 1.5%;
+    margin-left: 15%;
 }
 .add-new-photo{
     float: left;
     margin: 1%;
-    margin-right: 3.5%;
+
 }
 .exit{
     float: right;

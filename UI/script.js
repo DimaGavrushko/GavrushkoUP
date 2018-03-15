@@ -246,7 +246,7 @@ let mod = (function () {
 
         if(flag || post.id && photoPosts.findIndex(photoPost => photoPost.id === post.id) === -1 && typeof(post.id) === 'string')
             if(post.description && typeof(post.description) === 'string' && post.description.length > 0 && post.description.length < 200)
-                if(post.createdAt && typeof(post.createdAt) != 'Invalid Date')
+                if(post.createdAt && post.createdAt instanceof Date)
                     if (post.author && typeof(post.author) === 'string' && post.author.length !== 0)
                         if(post.photoLink && typeof(post.photoLink) === 'string' && post.photoLink.length !== 0)
                             if(!post.hashtags || (post.hashtags && post.hashtags.every(item => item[0] === '#')))
