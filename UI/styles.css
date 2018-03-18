@@ -103,7 +103,7 @@ footer{
     display: inline-block;
     margin: 4%;
     padding: 1%;
-    min-height: calc(52vh - 90px);
+    min-height: calc(50vh - 90px);
 }
 .cell{
     vertical-align:top;
