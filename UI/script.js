@@ -233,7 +233,7 @@ let mod = (function () {
         }
 
 
-        posts = posts.slice(skip, skip + top + 1);
+        posts = posts.slice(skip, skip + top);
         return posts;
     };
 

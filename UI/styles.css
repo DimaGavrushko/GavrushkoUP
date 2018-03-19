@@ -54,6 +54,12 @@ footer{
     color: white;
 
 }
+.foot{
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   width:100%;
+}
 
 .button-in-footer{
     display: inline-block;
@@ -103,12 +109,11 @@ footer{
     display: inline-block;
     margin: 4%;
     padding: 1%;
-    min-height: calc(50vh - 90px);
 }
 .cell{
     vertical-align:top;
-    border: 1px solid #fff; /* Белая рамка */
-    border-radius: 10px; /* Радиус скругления */
+    border: 1px solid #fff;
+    border-radius: 10px;
     display: inline-block;
     width: 40%;
     height: 100%;
@@ -160,14 +165,14 @@ footer{
     bottom:0.275em;
 }
 .button-load{
-    padding: 1.5em;
+    margin: 1%;
     text-align: center;
-    background-color:#f4f6f6;
+    background-color: #f4f6f6;
     font-weight: bold;
     font-size: 1.5em;
 }
 .button-load:hover{
-    color: #4dd7fa;;
+    color: #4dd7fa;
 }
 
 @media screen and (max-width:420px ){
