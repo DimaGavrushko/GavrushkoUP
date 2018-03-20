@@ -15,7 +15,9 @@ let modul = (function () {
             let addPhoto = document.createElement("div");
             addPhoto.className = "button-in-header add-new-photo";
             addPhoto.innerHTML = "Add new photo";
-
+            addPhoto.addEventListener('click',function handleClick() {
+                alert('Я хендлю клик');
+            })
             let exit = document.createElement("div");
             exit.className = "button-in-header exit";
             exit.innerHTML = "Exit";
@@ -60,9 +62,9 @@ let modul = (function () {
         let edit = document.createElement("img");
 
         if(post.author === user) {
-            trash.setAttribute('src', "img/trash.png");
+            trash.src = "./styles/img/trash.png";
             trash.innerHTML = "<br>";
-            edit.setAttribute('src', "img/edit.png");
+            edit.src = "./styles/img/edit.png";
         }
         let image = document.createElement("div");
         image.className = "image";
@@ -72,7 +74,7 @@ let modul = (function () {
         let like = document.createElement("div");
         like.className = "like icons";
         let iconOfLikes = document.createElement("img");
-        iconOfLikes.src = 'img/not_like.png';
+        iconOfLikes.src = "./styles/img/not_like.png";
 
         let countLikes = document.createElement("div");
         countLikes.className = "count-likes";

@@ -1,4 +1,4 @@
-.back-edit{
+.back-edit {
     margin: 0px;
     padding: 0px;
     background-image: url("img/editback.jpg");
@@ -7,21 +7,19 @@
     font-family: Arial;
 }
 
-.edit-photo{
+.edit-photo {
     float: left;
     position: relative;
     display: inline-block;
     margin: 2%;
     width: 35%;
-    background-color: rgba(255,255,255,0);
+    background-color: rgba(255, 255, 255, 0);
     height: 600px;
     padding: 1%;
     font-size: 22px;
 }
 
-
-
-.edit-inform{
+.edit-inform {
     overflow: hidden;
     display: inline-block;
     margin-top: 6%;
@@ -29,14 +27,15 @@
     font-size: 22px;
 }
 
-.icon-download{
+.icon-download {
     position: relative;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     width: 80%;
     height: 80%;
     border-color: #aaaaaa;
 }
-.icon-download img{
+
+.icon-download img {
     width: 20%;
     height: auto;
     position: absolute;
@@ -44,7 +43,7 @@
     left: 38%;
 }
 
-.button-done{
+.button-done {
     display: inline-block;
     padding: 1% 5%;
     background-color: #4dd7fa;
@@ -56,60 +55,52 @@
     width: 120px;
 }
 
-.edit-descr{
+.edit-descr {
     display: inline-block;
-    background-color: rgba(255,255,255,0);
+    background-color: rgba(255, 255, 255, 0);
     width: 100%;
     height: 225px;
 }
 
-.description{
+.description {
     font-size: 18px;
     overflow: hidden;
-    background-color: rgba(255,255,255,0.75);
+    background-color: rgba(255, 255, 255, 0.75);
     width: 90%;
     height: 150px;
     resize: none;
 }
 
-.edit-hash{
-    display:inline-block;
-    background-color: rgba(255,255,255,0);
+.edit-hash {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0);
     width: 100%;
     height: 225px;
 }
 
+@media screen and (min-width: 620px ) {
 
-
-
-@media screen and (min-width:620px ){
-
-    footer{
-        position:fixed;
-        left:0px;
-        bottom:0px;
-        width:100%;
+    footer {
+        position: fixed;
+        left: 0px;
+        bottom: 0px;
+        width: 100%;
     }
-
-
 
 }
 
-
-
-@media screen and (max-width:620px ){
-    .edit-photo{
+@media screen and (max-width: 620px ) {
+    .edit-photo {
         margin: 1% 1% 1% 15%;
         width: 85%;
     }
 
-
-    .edit-inform{
+    .edit-inform {
         margin: 1% 1% 1% 10%;
         width: 85%;
     }
 
-    .button-done{
+    .button-done {
         margin-left: 25%;
     }
 
