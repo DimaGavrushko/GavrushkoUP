@@ -1,0 +1,42 @@
+.back-error{
+    margin: 0px;
+    padding: 0px;
+    background-color: #1b1101;
+    font-family: Arial;
+}
+
+.code-of-mistake{
+    margin-top: 13%;
+    padding: 1%;
+    display: inline-block;
+    color: white;
+    text-align: right;
+    width: 40%;
+    font-weight:700;
+    font-size: 144px;
+}
+.text-mistake{
+    margin: 2%;
+    padding: 1%;
+    display: inline-block;
+    color: white;
+    text-align: left;
+    width: 40%;
+    font-weight: normal;
+    font-size: 36px;
+}
+
+a{
+    color: #4dd7fa;
+    text-decoration: none;
+}
+
+@media screen and (max-width:420px ){
+    .code-of-mistake{
+        text-align: center;
+        width: 100%;
+    }
+    .text-mistake{
+        width: 100%;
+    }
+}
