@@ -1,0 +1,210 @@
+﻿
+/************************************HEADER******************************************************/
+header{
+    height: auto;
+    overflow:hidden;
+    background-color: black;
+    color: white;
+    font-size: 2.5em;
+    font-weight: bold;
+    padding: 1.5%;
+    text-align: center;
+}
+.button-in-header{
+    display: inline;
+    position: relative;
+    font-size: 0.5em;
+}
+.button-in-header:hover{
+    color: #4dd7fa;
+}
+.name:hover{
+    color: white;
+}
+.name-sign{
+    font-size: 40px;
+    margin: auto;
+}
+
+.name{
+    font-size: 40px;
+    margin-left:6.5%;
+}
+.add-new-photo{
+    float: left;
+    margin: 1%;
+
+}
+.exit{
+    float: right;
+    margin: 1%;
+}
+.user-name{
+    float: right;
+    margin: 1%;
+}
+
+/*************************************FOOTER************************************************************/
+footer{
+    background-color: black;
+    height: auto;
+    overflow:hidden;
+    text-align: left;
+    padding: 0.5em;
+    color: white;
+
+}
+.foot{
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   width:100%;
+}
+
+.button-in-footer{
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+    padding: 0.5em;
+    margin-right: 2.5em;
+}
+
+.name-in-footer{
+    position: relative;
+    font-size: 18px;
+    bottom:0.3em;
+}
+/*********************************************************************************************************/
+.back{
+    margin: 0px;
+    padding: 0px;
+    background-color: #f4f6f6;
+    font-family: Arial;
+    font-weight: normal;
+}
+
+.search-line{
+    position: relative;
+    height: auto;
+    font-weight: 700;
+    background-color: white;
+    color: black;
+    font-size: 1.125em;
+    padding: 1.3em;
+}
+
+.text-box{
+	border-radius: 15px;
+}
+.checkbox{
+    display: inline-block;
+    font-weight: normal;
+    margin-right: 2em;
+    position: relative;
+}
+.photos-table{
+    font-size:1.2em;
+    width: auto;
+    position: relative;
+    display: inline-block;
+    margin: 4%;
+    padding: 1%;
+}
+.cell{
+    vertical-align:top;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    display: inline-block;
+    width: 40%;
+    height: 100%;
+    margin-left: 4%;
+    margin-bottom:2%;
+    padding: 1.5%;
+}
+
+.inside-cell-inform{
+    position: relative;
+    width: 95%;
+    overflow: hidden;
+    float: left;
+}
+
+.inside-cell-description{
+	font-family:Arial;
+    overflow: hidden;
+    height: auto;
+
+}
+
+.back-under-photo
+{
+    background-color:#efebeb
+}
+
+.icons img{
+	height:25px;
+	width:25px;
+}
+
+.image img{
+	height:30%;
+	width:100%;
+    position: relative;
+    display: inline-block;
+    margin: 0.5em 0em;
+}
+.like{
+    position: relative;
+    display: inline-block;
+
+}
+.count-likes{
+    display: inline-block;
+    position: relative;
+    font-weight: bold;
+    bottom:0.275em;
+}
+.button-load{
+    margin: 1%;
+    text-align: center;
+    background-color: #f4f6f6;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+.button-load:hover{
+    color: #4dd7fa;
+}
+
+@media screen and (max-width:420px ){
+	.cell{
+		padding:3px;
+		margin-left:10px;
+		width:95%;
+	}
+
+    .inside-cell-description{
+        max-width: 320px;
+        font-family:Arial;
+        overflow: hidden;
+    }
+
+	.name{
+		width:100%;
+		margin: 1%;
+	}
+	.add-new-photo{
+		width:100%;
+		margin: 1%;
+	}
+	.exit{
+		width:100%;
+		margin: 1%;
+	}
+	.user-name{
+		width:100%;
+		margin: 1%;
+}
+	
+	
+}
+
