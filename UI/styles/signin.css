@@ -46,6 +46,12 @@
     width: 220px;
 }
 
+.incorrect-log-or-pass
+{
+    color: red;
+    margin-bottom: 2%;
+    font-size: 100%;
+}
 @media screen and (max-width:420px ){
 
     .main-cell-signin{

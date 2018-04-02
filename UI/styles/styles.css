@@ -1,4 +1,7 @@
-﻿
+﻿input {outline:none;}
+div:hover {
+    cursor: default;
+}
 /************************************HEADER******************************************************/
 header{
     height: auto;
@@ -94,7 +97,7 @@ footer{
 }
 
 .text-box{
-	border-radius: 15px;
+	border-radius: 5px;
 }
 .checkbox{
     display: inline-block;

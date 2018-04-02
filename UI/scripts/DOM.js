@@ -1,5 +1,11 @@
 let user = null;
-
+let _skip = 0;
+let _top = 10;
+let _filterconfig = {
+    author: null,
+    createdAt: null,
+    hashtags: null
+};
 
 let modul = (function () {
 
@@ -7,17 +13,13 @@ let modul = (function () {
         document.querySelector('header').innerText = "";
         let photoPortal = document.createElement("div");
 
-        if(user)
-        {
+        if (user) {
             photoPortal.className = "button-in-header name-sign";
             photoPortal.innerHTML = "PhotoPortal";
             document.querySelector('header').appendChild(photoPortal);
             let addPhoto = document.createElement("div");
             addPhoto.className = "button-in-header add-new-photo";
             addPhoto.innerHTML = "Add new photo";
-            addPhoto.addEventListener('click',function handleClick() {
-                alert('Я хендлю клик');
-            })
             let exit = document.createElement("div");
             exit.className = "button-in-header exit";
             exit.innerHTML = "Exit";
@@ -29,19 +31,40 @@ let modul = (function () {
             document.querySelector('header').appendChild(addPhoto);
             document.querySelector('header').appendChild(exit);
             document.querySelector('header').appendChild(name);
+
+            function clickAdd() {
+                download.downloadEdit();
+            }
+
+            addPhoto.addEventListener('click', clickAdd);
+
+            function clickExit() {
+                user = null;
+                checkUser();
+                download.downloadMainPage();
+            }
+
+            exit.addEventListener('click', clickExit);
+
         }
-        else
-        {
+        else {
             photoPortal.className = "button-in-header name";
             photoPortal.innerHTML = "PhotoPortal";
             document.querySelector('header').appendChild(photoPortal);
-            let exit = document.createElement("div");
-            exit.className = "button-in-header exit";
-            exit.innerHTML = "Sign in";
+            let signIn = document.createElement("div");
 
-            document.querySelector('header').appendChild(exit);
+            function clickOnSignIn() {
+                download.downloadSignIn();
+            }
+
+            signIn.className = "button-in-header exit";
+            signIn.innerHTML = "Sign in";
+
+            document.querySelector('header').appendChild(signIn);
+            signIn.addEventListener('click', clickOnSignIn);
         }
     }
+
 
     let showPhotoPosts = function (post) {
         let photoTable = document.querySelector(".photos-table");
@@ -49,36 +72,84 @@ let modul = (function () {
 
         let Cell = document.createElement("div");
         Cell.className = "cell";
-        Cell.setAttribute('id',post.id);
-
+        Cell.setAttribute('id', post.id);
 
         let insideCellInform = document.createElement("div");
         insideCellInform.className = "inside-cell-inform";
-        insideCellInform.innerHTML = post.author + "<br>" + formatDate(post.createdAt);
+        insideCellInform.innerHTML = post.author + "<br>" + formatDate(new Date(post.createdAt));
 
         let icons = document.createElement("div");
         icons.className = "icons";
         let trash = document.createElement("img");
         let edit = document.createElement("img");
 
-        if(post.author === user) {
+        if (post.author === user) {
             trash.src = "./styles/img/trash.png";
             trash.innerHTML = "<br>";
             edit.src = "./styles/img/edit.png";
+            icons.appendChild(edit);
+            icons.appendChild(trash);
+
+            function clickEditIcon() {
+                download.downloadEdit(post);
+            }
+
+            edit.addEventListener('click', clickEditIcon);
+
+            function clickTrash() {
+                removePost(post.id, _skip, _top, _filterconfig);
+            }
+
+            trash.addEventListener('click', clickTrash);
         }
         let image = document.createElement("div");
         image.className = "image";
         let mainPhoto = document.createElement("img");
         mainPhoto.setAttribute('src', post.photoLink);
 
+
         let like = document.createElement("div");
         like.className = "like icons";
         let iconOfLikes = document.createElement("img");
-        iconOfLikes.src = "./styles/img/not_like.png";
+
+
+        if (user) {
+            function handleClickOnLike() {
+                if (post.likes.indexOf(user) !== -1) {
+                    iconOfLikes.src = "./styles/img/not_like.png";
+                    post.likes.splice(post.likes.indexOf(user), 1);
+                    if (post.likes.length > 0)
+                        countLikes.innerHTML = post.likes.length;
+                    else
+                        countLikes.innerHTML = "";
+                    localStorage.setItem('array',JSON.stringify(photoPosts));
+                }
+                else {
+                    iconOfLikes.src = "./styles/img/like.png";
+                    post.likes.push(user);
+                    if (post.likes.length > 0)
+                        countLikes.innerHTML = post.likes.length;
+                    else
+                        countLikes.innerHTML = "";
+                    localStorage.setItem('array',JSON.stringify(photoPosts));
+                }
+            }
+            iconOfLikes.addEventListener('click', handleClickOnLike);
+
+            if (post.likes.indexOf(user) !== -1)
+                iconOfLikes.src = "./styles/img/like.png";
+            else
+                iconOfLikes.src = "./styles/img/not_like.png";
+
+        }
+        else {
+            iconOfLikes.src = "./styles/img/not_like.png";
+        }
+
 
         let countLikes = document.createElement("div");
         countLikes.className = "count-likes";
-        if(post.likes.length != 0)
+        if (post.likes.length != 0)
             countLikes.innerHTML = post.likes.length;
 
         let backUnderPhoto = document.createElement("div");
@@ -91,13 +162,8 @@ let modul = (function () {
         backUnderPhoto.appendChild(insideCellDescr);
         like.appendChild(iconOfLikes);
         image.appendChild(mainPhoto);
-        if(user === post.author)
-        {
-            icons.appendChild(edit);
-            icons.appendChild(trash);
-        }
         Cell.appendChild(insideCellInform);
-        if(user === post.author)
+        if (user === post.author)
             Cell.appendChild(icons);
         Cell.appendChild(image);
         Cell.appendChild(like);
@@ -106,20 +172,6 @@ let modul = (function () {
         photoTable.appendChild(Cell);
     };
 
-
-    function formatDate(date) {
-
-        var dd = date.getDate();
-        if (dd < 10) dd = '0' + dd;
-
-        var mm = date.getMonth() + 1;
-        if (mm < 10) mm = '0' + mm;
-
-        var yy = date.getFullYear() % 100;
-        if (yy < 10) yy = '0' + yy;
-
-        return dd + '.' + mm + '.' + yy;
-    }
 
     function setHashTagInit() {
         let hashTagsSet = new Set();
@@ -149,33 +201,31 @@ let modul = (function () {
 
 }());
 
+function formatDate(date) {
+
+    let dd = date.getDate();
+    if (dd < 10) dd = '0' + dd;
+
+    let mm = date.getMonth() + 1;
+    if (mm < 10) mm = '0' + mm;
+
+    let yy = date.getFullYear() % 100;
+    if (yy < 10) yy = '0' + yy;
+
+    return dd + '.' + mm + '.' + yy;
+}
 
 function display(skip, top, filterConfig) {
-    document.body.getElementsByClassName("photos-table")[0].innerHTML="";
+    document.body.getElementsByClassName("photos-table")[0].innerHTML = "";
     let array = mod.getPhotoPosts(skip, top, filterConfig);
     for (let i = 0; i < array.length; i++) {
         modul.showPhotoPosts(array[i]);
     }
 }
 
-function addPost(post,skip, top, filterConfig) {
-    if(mod.addPhotoPost(post)){
-        mod.addPhotoPost(post);
+function removePost(id, skip, top, filterConfig) {
+    if (mod.removePhotoPost(id.toString())) {
         display(skip, top, filterConfig);
-    }
-}
-
-function removePost(id,skip, top, filterConfig) {
-    if(mod.removePhotoPost(id.toString())){
-        mod.removePhotoPost(id.toString());
-        display(skip, top, filterConfig);
-    }
-}
-
-function editPost(id,post,skip,top,filterConfig) {
-    if(mod.editPhotoPost(id.toString(),post)){
-        mod.editPhotoPost(id.toString(),post);
-        display(skip,top,filterConfig);
     }
 }
 
@@ -198,4 +248,5 @@ function addTagsSuggestions() {
     document.getElementById('tag-suggestions').innerHTML = options;
     return options;
 }
-modul.checkUser();
+readFromStorage();
+download.downloadMainPage();

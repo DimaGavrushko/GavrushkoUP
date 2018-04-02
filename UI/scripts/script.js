@@ -1,4 +1,4 @@
-var photoPosts = [
+/*var photoPosts = [
     {
         id: '1',
         description: 'Морозный Петербург с высоты птичьего полёта.',
@@ -105,7 +105,7 @@ var photoPosts = [
         id: '12',
         description: 'Photo by @tessledeux\n' +
         'Sixteen-year-old Tess Ledeux (@tessledeux) still remembers her first backcountry ski experience in her hometown in the French Alps.',
-        createdAt: new Date('2018-02-23'),
+        createdAt: new Date('2018-02-25'),
         author: 'instagram',
         photoLink: 'https://instagram.fbud2-1.fna.fbcdn.net/vp/ec966471c80dcc0908067f82f02b0749/5B2A78B7/t51.2885-15/e35/28157684_565061453855993_4607174365736337408_n.jpg',
         hashtags: ['#likeforlike', '#followme'],
@@ -153,12 +153,12 @@ var photoPosts = [
     },
     {
         id: '17',
-        description: '',
+        description: 'howdy yal',
         createdAt: new Date('2018-04-07'),
         author: 'exymore',
         photoLink: 'https://instagram.fbud2-1.fna.fbcdn.net/vp/a9aca956f9392f11f3463f10bd3c5ee7/5B2DAD26/t51.2885-15/e35/28433235_2012800552266665_5152045191196049408_n.jpg',
         hashtags: ['#vscorussia', '#bestvscobelarus', '#instagramrussia', '#instasng'],
-        likes: ['unknown', 'unknown']
+        likes: ['unknown', 'unknown','exymore']
     },
     {
         id: '18',
@@ -168,33 +168,52 @@ var photoPosts = [
         author: 'exymore',
         photoLink: 'https://instagram.fbud2-1.fna.fbcdn.net/vp/ac86b6e083837dd467b46b88c01ba40c/5B4C491A/t51.2885-15/e35/23099003_1917895798531610_2104949848133337088_n.jpg',
         hashtags: ['#likeforlike', '#followme'],
-        likes: ['unknown', 'unknown']
+        likes: ['unknown', 'unknown','exymore']
     },
     {
         id: '19',
-        description: '',
+        description: 'howdy yal',
         createdAt: new Date('2018-02-22'),
         author: 'exymore',
         photoLink: 'https://instagram.fbud2-1.fna.fbcdn.net/vp/493fe73e5930865f6dda62f9aff6e686/5B42B6FB/t51.2885-15/e35/21690614_1262363057196785_6024307835892924416_n.jpg',
         hashtags: ['#minsk', '#belarus'],
-        likes: ['unknown', 'unknown','unknown,','unknown','unknown','unknown','unknown','unknown']
+        likes: ['unknown', 'unknown','unknown,','unknown','unknown','unknown','unknown','unknown','exymore']
     },
     {
         id: '20',
         description: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
         createdAt: new Date('2018-02-23'),
-        author: 'Иванов Иван',
+        author: 'Иванов',
         photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
         hashtags: ['#like', '#followme'],
-        likes: ['unknown', 'unknown']
+        likes: ['unknown', 'unknown','exymore']
+    },
+    {
+        id: '21',
+        description: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
+        createdAt: new Date('2018-02-23'),
+        author: 'Иванов',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['#like', '#followme'],
+        likes: ['unknown', 'unknown','exymore']
     }
 
 ];
+*/
+function serializable() {
+    let serialObj;
+    localStorage.setItem('array',JSON.stringify(photoPosts));
+}
+
+let photoPosts = [];
+function readFromStorage() {
+    photoPosts = JSON.parse(localStorage.getItem('array'));
+}
 
 let mod = (function () {
 
     function compareByDate(a, b) {
-        return a.createdAt - b.createdAt;
+        return new Date(a.createdAt) - new Date(b.createdAt);
     };
 
     let getPhotoPosts = function (skip = 0, top = 10, filterConfig) {
@@ -243,18 +262,26 @@ let mod = (function () {
 
 
     let validatePhotoPost = function (post,flag = false) {
-        if(flag || post.id && photoPosts.findIndex(photoPost => photoPost.id === post.id) === -1 && typeof(post.id) === 'string')
-            if((flag && post.description !== '') || (post.description && typeof(post.description) === 'string' && post.description.length > 0 && post.description.length < 200))
-                if(flag || post.createdAt && post.createdAt instanceof Date)
-                    if (flag || post.author && typeof(post.author) === 'string' && post.author.length !== 0)
-                        if((flag && post.photoLink !== '') || (post.photoLink && typeof(post.photoLink) === 'string' && post.photoLink.length !== 0))
-                            if(!post.hashtags || (post.hashtags && post.hashtags.every(item => item[0] === '#')))
-                                if(!post.likes || (post.likes && post.likes.every(item => typeof(item) === 'string')))
-                                 {
-                                    return true;
-                                 }
+        if(!flag) {
+            if (post.id && photoPosts.findIndex(photoPost => photoPost.id === post.id) === -1 && typeof(post.id) === 'string')
+                if (post.description && typeof(post.description) === 'string' && post.description.length > 0 && post.description.length < 200)
+                    if (post.createdAt && post.createdAt instanceof Date)
+                        if (post.author && typeof(post.author) === 'string' && post.author.length !== 0)
+                            if (post.photoLink && typeof(post.photoLink) === 'string' && post.photoLink.length !== 0)
+                                if (post.hashtags === []|| (post.hashtags && post.hashtags.every(item => item[0] === '#')))
+                                    if (post.likes === [] || (post.likes && post.likes.every(item => typeof(item) === 'string'))) {
+                                        return true;
+                                    }
 
-
+        }
+        else{
+           if((post.description && typeof(post.description) === 'string' && post.description.length > 0 && post.description.length < 200))
+                if((post.photoLink && typeof(post.photoLink) === 'string' && post.photoLink.length !== 0))
+                    if (post.hashtags === [] || (post.hashtags && post.hashtags.every(item => item[0] === '#')))
+                        if (post.likes === [] || (post.likes && post.likes.every(item => typeof(item) === 'string'))) {
+                            return true;
+                        }
+        }
         return false;
     };
 
@@ -303,135 +330,5 @@ let mod = (function () {
         editPhotoPost,
         removePhotoPost
     }
-
-
-
-
 }());
 
-
-    var CorrectPost = {
-    id: '45',
-    description: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
-    createdAt: new Date('2017-01-01'),
-    author: 'Иван',
-    photoLink: 'img/pattern2.jpg',
-    hashtags: ['#like', '#followme'],
-    likes: ['unknown', 'unknown']
-}
-var InCorrectID = {
-    id: '1',
-    description: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
-    createdAt: new Date('2017-03-03'),
-    author: 'Иван',
-    photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-    hashtags: ['#like', '#followme'],
-    likes: ['unknown', 'unknown']
-}
-var InCorrectDescr = {
-    id: '45',
-    description: '',
-    createdAt: new Date('2017-03-03'),
-    author: 'Иван',
-    photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-    hashtags: ['#like', '#followme'],
-    likes: ['unknown', 'unknown']
-}
-var InCorrectData = {
-    id: '45',
-    description: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
-    createdAt: new Date('2017-23-43'),
-    author: 'Иван',
-    photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-    hashtags: ['#like', '#followme'],
-    likes: ['unknown', 'unknown']
-}
-var InCorrectLink = {
-    id: '45',
-    description: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
-    createdAt: new Date('2017-03-03'),
-    author: 'Иван',
-    hashtags: ['#like', '#followme'],
-    likes: ['unknown', 'unknown']
-}
-var InCorrectHash = {
-    id: '45',
-    description: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
-    createdAt: new Date('2017-03-03'),
-    author: 'Иван',
-    photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-    hashtags: ['like', 'followme'],
-    likes: ['unknown', 'unknown']
-}
-var InCorrectLikes = {
-    id: '45',
-    description: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
-    createdAt: new Date('2017-03-03'),
-    author: 'Иван',
-    photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-    hashtags: ['#like', '#followme'],
-    likes: ['unknown', 24234]
-}
-
-/*
-console.log('Array of photoposts: ');
-console.log(photoPosts);
-console.log('*********************Testing method getPhotoPost********************');
-console.log("mod.getPhotoPost('1')");
-console.log(mod.getPhotoPost('1'));
-console.log("mod.getPhotoPost('127')");
-console.log(mod.getPhotoPost('127'));
-
-
-
-console.log('*********************Testing methods addPhotoPost and validatePhotoPost********************');
-console.log('Correct:');
-console.log(mod.addPhotoPost(CorrectPost));
-console.log('incorrect id: mod.addPhotoPost(InCorrectID)');
-console.log(mod.addPhotoPost(InCorrectID));
-console.log('incorrect description: mod.addPhotoPost(InCorrectDesc)');
-console.log(mod.addPhotoPost(InCorrectDescr));
-console.log('incorrect Data: mod.addPhotoPost(InCorrectData)');
-console.log(mod.addPhotoPost(InCorrectData));
-console.log('incorrect Link: mod.addPhotoPost(InCorrectLink)');
-console.log(mod.addPhotoPost(InCorrectLink));
-console.log('incorrect Hash-tags: mod.addPhotoPost(InCorrectHash)');
-console.log(mod.addPhotoPost(InCorrectHash));
-console.log('incorrect Likes: mod.addPhotoPost(InCorrectID)');
-console.log(mod.addPhotoPost(InCorrectLikes));
-
-
-
-console.log('*********************Testing methods editPhotoPost********************');
-console.log(mod.editPhotoPost('1', {description: 'hi'}));
-console.log(mod.getPhotoPost('1'));
-console.log('Incorrect (attempt to change id):');
-console.log(mod.editPhotoPost('1', {id: '2'}));
-console.log('Incorrect data:');
-console.log(mod.editPhotoPost('4', { description:''}));
-console.log("Edit more than one field:");
-console.log(mod.editPhotoPost('4', {description: 'new', hashtags: ['#its_me']}));
-console.log(mod.getPhotoPost('4'));
-
-console.log('*********************Testing methods removePhotoPost********************');
-console.log('Correct');
-console.log(mod.removePhotoPost('45'));
-console.log('Incorrect ID');
-console.log(mod.removePhotoPost('4333'));
-
-
-
-console.log('*********************Testing methods getPhotoPosts********************');
-console.log('******************************');
-console.log(mod.getPhotoPosts(0,10));
-console.log('******************************');
-console.log(mod.getPhotoPosts(3,5));
-console.log('******************************');
-console.log(mod.getPhotoPosts(0,10,{author:'Иван'}));
-console.log('******************************');
-console.log(mod.getPhotoPosts(0,10,{ author:'Иван', hashtags:['#like']}));
-console.log('******************************');
-console.log(mod.getPhotoPosts(0,10,{author:'LLBBB'}));
-console.log('******************************');
-
-*/

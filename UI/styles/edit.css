@@ -29,18 +29,38 @@
 
 .icon-download {
     position: relative;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.75);
     width: 80%;
     height: 80%;
-    border-color: #aaaaaa;
+    padding: 5%;
+    border-radius: 5px;
 }
 
+.drag-drop{
+    //display: block;
+    background-color: rgba(12, 45, 239, 0.16);
+    border: dashed #aaaaaa;
+    border-radius: 5px;
+    height: 70%;
+    //width: 100%;
+}
+.drag-drop p{
+    margin-top: 30%;
+    text-align: center;
+    font-size: 130%;
+    color: #aaaaaa;
+}
+
+.drag-drop.highlight
+{
+    background-color: rgba(255, 255, 255, 0.5);
+}
 .icon-download img {
-    width: 20%;
-    height: auto;
+    width: auto;
+    height: 22%;
     position: absolute;
-    bottom: 5px;
-    left: 38%;
+    bottom: 25px;
+    border-radius: 5px;
 }
 
 .button-done {
@@ -53,6 +73,7 @@
     font-size: 22px;
     text-align: center;
     width: 120px;
+
 }
 
 .edit-descr {
@@ -60,6 +81,7 @@
     background-color: rgba(255, 255, 255, 0);
     width: 100%;
     height: 225px;
+    border-radius: 5px;
 }
 
 .description {
@@ -69,6 +91,7 @@
     width: 90%;
     height: 150px;
     resize: none;
+    border-radius: 5px;
 }
 
 .edit-hash {
@@ -76,11 +99,20 @@
     background-color: rgba(255, 255, 255, 0);
     width: 100%;
     height: 225px;
+    border-radius: 5px;
+}
+
+.incorrect-inform{
+    float: right;
+    margin-top: 2%;
+    margin-right: 2%;
+    color: red;
+    font-size: 80%;
 }
 
 @media screen and (min-width: 620px ) {
 
-    footer {
+    .footer-in-edit {
         position: fixed;
         left: 0px;
         bottom: 0px;
