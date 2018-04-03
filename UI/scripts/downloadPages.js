@@ -70,7 +70,7 @@ let download = (function () {
         edit_photo.className = 'edit-photo';
         let date;
         if (post)
-            edit_photo.innerHTML = post.author + '<br>' + formatDate(post.createdAt);
+            edit_photo.innerHTML = post.author + '<br>' + formatDate(new Date(post.createdAt));
         else {
             date = new Date();
             edit_photo.innerHTML = user + '<br>' + formatDate(date);
