@@ -1,6 +1,6 @@
 let download = (function () {
     function deletePage() {
-        while (document.body.children.length > 5) {
+        while (document.body.children.length > 6) {
             document.body.removeChild(document.body.children[1]);
         }
     }
@@ -46,7 +46,7 @@ let download = (function () {
         }
 
         let button_signIn = document.getElementsByClassName('button-signin')[0];
-        button_signIn.addEventListener('click', clickSignIn);
+        events.clickLogIn(button_signIn,incorrect_log_or_pass);
 
     };
 
@@ -98,57 +98,7 @@ let download = (function () {
         let incorrect_inform = document.createElement('div');
         incorrect_inform.className = 'incorrect-inform';
 
-        dropArea.addEventListener("dragover", function (event) {
-            event.preventDefault();
-        }, false);
-
-        function validFileType(file) {
-            let fileTypes = [
-                'image/jpeg',
-                'image/img',
-                'image/png',
-                'image/jpg'
-            ];
-
-            for (let i = 0; i < fileTypes.length; i++) {
-                if (file.type === fileTypes[i]) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        dropArea.addEventListener("drop", function (event) {
-            event.preventDefault();
-            let files = event.dataTransfer.files;
-            let reader = new FileReader();
-            reader.readAsDataURL(files[0]);
-            reader.onloadend = function () {
-                if (validFileType(files[0])) {
-                    incorrect_photo.innerHTML = '';
-                    imgDropArea.setAttribute('src', reader.result);
-                }
-                else
-                    incorrect_photo.innerHTML = 'Incorrect type of photo';
-
-            };
-        }, false);
-
-        ['dragenter', 'dragover'].forEach(eventName => {
-            dropArea.addEventListener(eventName, highlight, false)
-        });
-
-        ['dragleave', 'drop'].forEach(eventName => {
-            dropArea.addEventListener(eventName, unhighlight, false)
-        })
-
-        function highlight(e) {
-            dropArea.classList.add('highlight')
-        }
-
-        function unhighlight(e) {
-            dropArea.classList.remove('highlight')
-        }
+        events.dragAndDrop(dropArea,incorrect_photo,imgDropArea);
 
         let edit_inform = document.createElement('div');
         edit_inform.className = 'edit-inform';
@@ -182,65 +132,7 @@ let download = (function () {
         descr = document.getElementById('descr');
         hash_tags = document.getElementById('hash');
 
-        function generateUniqId() {
-            let ID = 1;
-            for (let i = 0; i < photoPosts.length; i++) {
-                for (let j = 0; j < photoPosts.length; j++) {
-                    if (photoPosts[j].id == ID) {
-                        ID++;
-                        break;
-                    }
-
-                }
-            }
-            return ID.toString();
-        }
-
-        function clickDone() {
-            if (post !== null) {
-                new_post.description = descr.value;
-                if (hash_tags.value !== '') {
-                    let tmp = hash_tags.value.split(' ');
-                    new_post.hashtags = tmp;
-                }
-                else
-                    new_post.hashtags = [];
-
-                new_post.photoLink = imgDropArea.getAttribute('src');
-                new_post.likes = post.likes;
-                if (mod.editPhotoPost(post.id.toString(), new_post)) {
-                    localStorage.setItem('array',JSON.stringify(photoPosts));
-                    downloadMainPage();
-                }
-                else {
-                    incorrect_inform.innerHTML = 'Incorrect description or hash-tags';
-                }
-            }
-            else {
-                new_post.id = generateUniqId();
-                new_post.author = user;
-                new_post.createdAt = date;
-                new_post.photoLink = imgDropArea.getAttribute('src');
-                new_post.description = descr.value;
-                if (hash_tags.value !== '') {
-                    let tmp = hash_tags.value.split(' ');
-                    new_post.hashtags = tmp;
-                }
-                else
-                    new_post.hashtags = [];
-
-                new_post.likes = [];
-                if (mod.addPhotoPost(new_post)) {
-                    localStorage.setItem('array',JSON.stringify(photoPosts));
-                    downloadMainPage();
-                }
-                else {
-                    incorrect_inform.innerHTML = 'Incorrect description or hash-tags';
-                }
-            }
-        }
-
-        button_done.addEventListener('click', clickDone);
+        events.clickDoneButton(post,new_post,imgDropArea,incorrect_inform,date,button_done);
     };
 
     let downloadMainPage = function () {
@@ -277,54 +169,21 @@ let download = (function () {
         let textDate = document.getElementById('textDate');
         let checkboxHash = document.getElementById('checkboxHash');
         let textHash = document.getElementById('textHash');
-
-        function clickSearch() {
-            _filterconfig = {
-                author: null,
-                createdAt: null,
-                hashtags: null
-            };
-
-            if (checkboxAuthor.checked === true && textAuthor.value !== "") {
-                _filterconfig.author = textAuthor.value;
-                _top = 10;
-            }
-
-            if (checkboxDate.checked === true && textDate.value !== "") {
-                _filterconfig.createdAt = new Date(textDate.value);
-                _top = 10;
-            }
-
-            if (checkboxHash.checked === true && textHash.value !== "") {
-                let tmp = textHash.value.split(' ');
-                _filterconfig.hashtags = tmp;
-                _top = 10;
-            }
-
-            display(_skip, _top, _filterconfig);
-        }
-
         let buttonSearch = document.getElementById('buttonSearch');
-        buttonSearch.addEventListener('click', clickSearch);
+
+        events.clickSearchButton(checkboxAuthor,textAuthor,checkboxDate,textDate,checkboxHash,textHash,buttonSearch);
 
         let photoTable = document.createElement("div");
         photoTable.className = "photos-table";
-
 
         let buttonLoad = document.createElement("div");
         buttonLoad.className = "button-load";
         buttonLoad.innerHTML = 'Load more';
 
-
         document.body.insertBefore(photoTable, document.body.children[2]);
         document.body.insertBefore(buttonLoad, document.body.children[3]);
 
-        function clickLoad() {
-            _top += 10;
-            display(_skip, _top, _filterconfig);
-        }
-
-        buttonLoad.addEventListener('click', clickLoad);
+        events.clickLoadButton(buttonLoad);
         modul.checkUser();
         addTagsSuggestions();
         addAuthorSuggestions();

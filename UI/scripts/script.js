@@ -1,4 +1,4 @@
-/*var photoPosts = [
+var tmpPosts = [
     {
         id: '1',
         description: 'Морозный Петербург с высоты птичьего полёта.',
@@ -199,7 +199,7 @@
     }
 
 ];
-*/
+
 function serializable() {
     let serialObj;
     localStorage.setItem('array',JSON.stringify(photoPosts));
@@ -208,6 +208,8 @@ function serializable() {
 let photoPosts = [];
 function readFromStorage() {
     photoPosts = JSON.parse(localStorage.getItem('array'));
+    if(photoPosts === null)
+        photoPosts = tmpPosts;
 }
 
 let mod = (function () {

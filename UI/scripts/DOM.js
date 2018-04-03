@@ -32,19 +32,8 @@ let modul = (function () {
             document.querySelector('header').appendChild(exit);
             document.querySelector('header').appendChild(name);
 
-            function clickAdd() {
-                download.downloadEdit();
-            }
-
-            addPhoto.addEventListener('click', clickAdd);
-
-            function clickExit() {
-                user = null;
-                checkUser();
-                download.downloadMainPage();
-            }
-
-            exit.addEventListener('click', clickExit);
+            events.clickAddButton(addPhoto);
+            events.clickExitButton(exit);
 
         }
         else {
@@ -53,15 +42,11 @@ let modul = (function () {
             document.querySelector('header').appendChild(photoPortal);
             let signIn = document.createElement("div");
 
-            function clickOnSignIn() {
-                download.downloadSignIn();
-            }
-
             signIn.className = "button-in-header exit";
             signIn.innerHTML = "Sign in";
 
             document.querySelector('header').appendChild(signIn);
-            signIn.addEventListener('click', clickOnSignIn);
+            events.clickSignInButton(signIn);
         }
     }
 
@@ -89,18 +74,8 @@ let modul = (function () {
             edit.src = "./styles/img/edit.png";
             icons.appendChild(edit);
             icons.appendChild(trash);
-
-            function clickEditIcon() {
-                download.downloadEdit(post);
-            }
-
-            edit.addEventListener('click', clickEditIcon);
-
-            function clickTrash() {
-                removePost(post.id, _skip, _top, _filterconfig);
-            }
-
-            trash.addEventListener('click', clickTrash);
+            events.clickEditIcon(edit,post);
+            events.clickTrashIcon(trash,post);
         }
         let image = document.createElement("div");
         image.className = "image";
@@ -111,44 +86,20 @@ let modul = (function () {
         let like = document.createElement("div");
         like.className = "like icons";
         let iconOfLikes = document.createElement("img");
-
+        let countLikes = document.createElement("div");
+        countLikes.className = "count-likes";
 
         if (user) {
-            function handleClickOnLike() {
-                if (post.likes.indexOf(user) !== -1) {
-                    iconOfLikes.src = "./styles/img/not_like.png";
-                    post.likes.splice(post.likes.indexOf(user), 1);
-                    if (post.likes.length > 0)
-                        countLikes.innerHTML = post.likes.length;
-                    else
-                        countLikes.innerHTML = "";
-                    localStorage.setItem('array',JSON.stringify(photoPosts));
-                }
-                else {
-                    iconOfLikes.src = "./styles/img/like.png";
-                    post.likes.push(user);
-                    if (post.likes.length > 0)
-                        countLikes.innerHTML = post.likes.length;
-                    else
-                        countLikes.innerHTML = "";
-                    localStorage.setItem('array',JSON.stringify(photoPosts));
-                }
-            }
-            iconOfLikes.addEventListener('click', handleClickOnLike);
-
+            events.clickLikeButton(iconOfLikes,post,countLikes);
             if (post.likes.indexOf(user) !== -1)
                 iconOfLikes.src = "./styles/img/like.png";
             else
                 iconOfLikes.src = "./styles/img/not_like.png";
-
         }
         else {
             iconOfLikes.src = "./styles/img/not_like.png";
         }
 
-
-        let countLikes = document.createElement("div");
-        countLikes.className = "count-likes";
         if (post.likes.length != 0)
             countLikes.innerHTML = post.likes.length;
 

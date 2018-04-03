@@ -37,12 +37,11 @@
 }
 
 .drag-drop{
-    //display: block;
+    overflow: hidden;
     background-color: rgba(12, 45, 239, 0.16);
     border: dashed #aaaaaa;
     border-radius: 5px;
     height: 70%;
-    //width: 100%;
 }
 .drag-drop p{
     margin-top: 30%;
